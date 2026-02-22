@@ -18,6 +18,13 @@ const projects = [
     github: "https://github.com/NehaDhirendraSirur/GenAI_for_IndianClassicalMusic",
   },
   {
+  title: "URL Redirection Service",
+  description:
+    "A URL Redirection Service with URL shortening, expiry handling, and analytics using Spring Boot and PostgreSQL. Long URLs are difficult to share and track. This service generates short, unique URLs and resolves them with low latency while handling expiration and basic analytics.",
+  tech: ["Spring Boot", "PostgreSQL", "React.js"],
+  github: "https://github.com/NehaDhirendraSirur/Url_Redirection_Service",
+  },
+  {
   title: "Multilingual Text Classification using IndicCorp dataset",
   description:
     "This project presents a Multilingual Text Classification System using IndicCorp, a monolingual dataset with 11 Indic languages. The methodology integrates CountVectorizer for feature extraction and Multinomial Naïve Bayes for classification, achieving 73.37% accuracy.",
@@ -35,14 +42,14 @@ const projects = [
     title: "Crop Wellness Analyzer",
     description:
       "Developed a full-stack web application using React, Spring Boot, MySQL, and MongoDB to optimize crop productivity for small-scale farmers. Built a Crop Information System with a relational schema for plants, diseases, symptoms, and solutions. Integrated an ML-based disease detection API using Flask and Axios for real-time image analysis. Implemented a User Query System enabling farmers to raise issues and receive admin responses efficiently.",
-    tech: ["React", "Spring Boot", "MySQL", "MongoDB", "Flask", "Machine Learning"],
+    tech: ["React.js", "Spring Boot", "MySQL", "MongoDB", "Flask", "Machine Learning"],
     github: "https://github.com/NehaDhirendraSirur/Crop-Wellness-Analyzer",
   },
   {
     title: "Portfolio Website",
     description:
       "Personal portfolio showcasing projects, certificates, and experiences with smooth UI/UX.",
-    tech: ["React", "Tailwind CSS", "Framer Motion"],
+    tech: ["React.js", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/NehaDhirendraSirur/portfolio",
   },
 ];
