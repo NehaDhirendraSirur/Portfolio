@@ -5,7 +5,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="py-16 bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-gray-200"
+      className="pt-28 pb-20 px-6 bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-gray-200"
     >
       <div className="max-w-5xl mx-auto px-6 md:px-12">
         {/* Title */}
@@ -26,7 +26,7 @@ const About = () => {
           transition={{ duration: 0.8 }}
         >
           <p className="mb-4">
-            I’m{" "}
+            I'm{" "}
             <span className="font-semibold text-white">
               Neha Dhirendra Sirur
             </span>
@@ -52,15 +52,14 @@ const About = () => {
             <span className="font-semibold text-blue-300">
               six international publications
             </span>{" "}
-            to my credit, exploring areas such as{" "}
-            <span className="italic">explainable AI, generative models,</span>{" "}
-            and <span className="italic">data-driven applications</span>.
+            to my credit, exploring areas such as explainable AI, generative models,
+            and data-driven applications.
           </p>
 
           <p>
             With a foundation in both development and research, I bring a
             problem-solving mindset, strong teamwork skills, and the drive to
-            deliver solutions that are both innovative and impactful. I’m always
+            deliver solutions that are both innovative and impactful. I'm always
             eager to learn, adapt, and grow while contributing meaningfully to
             the tech ecosystem.
           </p>
