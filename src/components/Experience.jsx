@@ -62,13 +62,13 @@ const experiences = [
 
 export default function Experience() {
   const [openIdx, setOpenIdx] = useState(null);
-
   const toggle = (idx) => setOpenIdx(openIdx === idx ? null : idx);
 
   return (
     <div className="relative min-h-screen bg-[#0a192f] text-white px-6 pt-28 pb-20">
+
       <motion.h2
-        className="text-3xl md:text-4xl font-bold text-center mb-14"
+        className="text-3xl md:text-4xl font-bold text-center mb-12"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -76,123 +76,131 @@ export default function Experience() {
         Experience
       </motion.h2>
 
-      <div className="max-w-3xl mx-auto relative">
+      {/* Constrained centered container */}
+      <div className="max-w-2xl mx-auto">
 
-        {/* Vertical line */}
-        <div
-          className="absolute left-[18px] top-0 bottom-0 w-0.5"
-          style={{ backgroundColor: "#005A9C" }}
-        />
+        {/* Timeline wrapper — line runs through left gutter */}
+        <div className="relative">
 
-        <div className="space-y-8">
-          {experiences.map((exp, idx) => (
-            <motion.div
-              key={idx}
-              className="relative pl-12"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-            >
-              {/* Timeline dot */}
-              <div
-                className="absolute left-[11px] top-5 w-4 h-4 rounded-full border-2 z-10"
-                style={{
-                  backgroundColor: openIdx === idx ? "#60A5FA" : "#005A9C",
-                  borderColor: openIdx === idx ? "#93C5FD" : "#005A9C",
-                  transition: "all 0.3s ease",
-                }}
-              />
+          {/* Vertical line — positioned in the dot column */}
+          <div
+            className="absolute left-[7px] top-2 bottom-2 w-0.5 hidden sm:block"
+            style={{ backgroundColor: "#1D4ED8" }}
+          />
 
-              {/* Card */}
-              <div
-                className={`rounded-2xl bg-[#1A2B42] ring-1 transition-all duration-300 overflow-hidden ${
-                  openIdx === idx
-                    ? "ring-blue-400 shadow-lg shadow-blue-500/20"
-                    : "ring-white/10 hover:ring-white/25"
-                }`}
+          <div className="space-y-6">
+            {experiences.map((exp, idx) => (
+              <motion.div
+                key={idx}
+                className="relative flex gap-6 sm:gap-8"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
-                {/* Header — always visible, click to toggle */}
-                <button
-                  onClick={() => toggle(idx)}
-                  className="w-full text-left px-6 py-5 flex items-start justify-between gap-4"
+                {/* Dot column — desktop only */}
+                <div className="hidden sm:flex flex-col items-center pt-5 shrink-0">
+                  <div
+                    className="w-3.5 h-3.5 rounded-full border-2 z-10 transition-all duration-300"
+                    style={{
+                      backgroundColor: openIdx === idx ? "#60A5FA" : "#1D4ED8",
+                      borderColor: openIdx === idx ? "#93C5FD" : "#1D4ED8",
+                    }}
+                  />
+                </div>
+
+                {/* Card */}
+                <div
+                  className={`flex-1 rounded-2xl bg-[#1A2B42] ring-1 transition-all duration-300 overflow-hidden ${
+                    openIdx === idx
+                      ? "ring-blue-400 shadow-lg shadow-blue-500/20"
+                      : "ring-white/10 hover:ring-white/25"
+                  }`}
                 >
-                  <div className="flex-1 min-w-0">
-                    {/* Role + company + duration */}
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-1">
-                      <h3 className="text-lg md:text-xl font-semibold text-white">
-                        {exp.role}
-                      </h3>
-                      <span className="text-blue-300 font-medium text-sm">
-                        {exp.company}
-                      </span>
-                    </div>
-                    <p className="text-xs text-gray-400 mb-3">{exp.duration}</p>
-
-                    {/* Summary snippet */}
-                    <p className="text-sm text-gray-300 leading-relaxed">
-                      {exp.summary}
-                    </p>
-
-                    {/* Tech tags */}
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      {exp.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-[11px] px-2.5 py-0.5 rounded-full bg-blue-500/15 text-blue-200 border border-blue-500/25 font-medium"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Chevron */}
-                  <motion.div
-                    animate={{ rotate: openIdx === idx ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="shrink-0 mt-1 text-gray-400"
+                  {/* Header */}
+                  <button
+                    onClick={() => toggle(idx)}
+                    className="w-full text-left px-5 py-5 flex items-start justify-between gap-4"
                   >
-                    <ChevronDown size={20} />
-                  </motion.div>
-                </button>
-
-                {/* Expanded bullet points */}
-                <AnimatePresence initial={false}>
-                  {openIdx === idx && (
-                    <motion.div
-                      key="content"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 pb-6 border-t border-white/10 pt-4">
-                        <ul className="space-y-2.5">
-                          {exp.description.map((point, i) => (
-                            <motion.li
-                              key={i}
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: i * 0.05 }}
-                              className="flex items-start gap-2.5 text-sm text-gray-200"
-                            >
-                              <span
-                                className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"
-                                style={{ backgroundColor: "#60A5FA" }}
-                              />
-                              {point}
-                            </motion.li>
-                          ))}
-                        </ul>
+                    <div className="flex-1 min-w-0">
+                      {/* Role + company */}
+                      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 mb-1">
+                        <h3 className="text-base md:text-lg font-semibold text-white leading-snug">
+                          {exp.role}
+                        </h3>
+                        <span className="text-blue-300 font-medium text-sm">
+                          · {exp.company}
+                        </span>
                       </div>
+
+                      {/* Duration */}
+                      <p className="text-xs text-gray-400 mb-3">{exp.duration}</p>
+
+                      {/* Summary */}
+                      <p className="text-sm text-gray-300 leading-relaxed">
+                        {exp.summary}
+                      </p>
+
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-1.5 mt-3">
+                        {exp.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[11px] px-2.5 py-0.5 rounded-full bg-blue-500/15 text-blue-200 border border-blue-500/25 font-medium"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Chevron */}
+                    <motion.div
+                      animate={{ rotate: openIdx === idx ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="shrink-0 mt-1 text-gray-400"
+                    >
+                      <ChevronDown size={18} />
                     </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </motion.div>
-          ))}
+                  </button>
+
+                  {/* Expanded bullets */}
+                  <AnimatePresence initial={false}>
+                    {openIdx === idx && (
+                      <motion.div
+                        key="content"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.35, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-5 pb-5 border-t border-white/10 pt-4">
+                          <ul className="space-y-2.5">
+                            {exp.description.map((point, i) => (
+                              <motion.li
+                                key={i}
+                                initial={{ opacity: 0, x: -8 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: i * 0.05 }}
+                                className="flex items-start gap-2.5 text-sm text-gray-200 leading-relaxed"
+                              >
+                                <span
+                                  className="mt-2 w-1.5 h-1.5 rounded-full shrink-0"
+                                  style={{ backgroundColor: "#60A5FA" }}
+                                />
+                                {point}
+                              </motion.li>
+                            ))}
+                          </ul>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
