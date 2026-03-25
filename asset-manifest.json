@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.bae5af51.css",
-    "main.js": "/Portfolio/static/js/main.0b7bc94c.js",
+    "main.css": "/Portfolio/static/css/main.ad501ab6.css",
+    "main.js": "/Portfolio/static/js/main.dd1dfa5e.js",
     "static/js/453.a7d99afe.chunk.js": "/Portfolio/static/js/453.a7d99afe.chunk.js",
     "static/media/conf_certificate5.jpg": "/Portfolio/static/media/conf_certificate5.997dd260e3e87aa299ab.jpg",
     "static/media/conf_certificate1.jpg": "/Portfolio/static/media/conf_certificate1.99b87004bcb4c9539f50.jpg",
@@ -19,12 +19,12 @@
     "static/media/version_control.jpg": "/Portfolio/static/media/version_control.cbfb3c1fa07d7bbcc8f9.jpg",
     "static/media/NehaSirur_Resume.pdf": "/Portfolio/static/media/NehaSirur_Resume.fddcb4520aee316655b4.pdf",
     "index.html": "/Portfolio/index.html",
-    "main.bae5af51.css.map": "/Portfolio/static/css/main.bae5af51.css.map",
-    "main.0b7bc94c.js.map": "/Portfolio/static/js/main.0b7bc94c.js.map",
+    "main.ad501ab6.css.map": "/Portfolio/static/css/main.ad501ab6.css.map",
+    "main.dd1dfa5e.js.map": "/Portfolio/static/js/main.dd1dfa5e.js.map",
     "453.a7d99afe.chunk.js.map": "/Portfolio/static/js/453.a7d99afe.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bae5af51.css",
-    "static/js/main.0b7bc94c.js"
+    "static/css/main.ad501ab6.css",
+    "static/js/main.dd1dfa5e.js"
   ]
 }
