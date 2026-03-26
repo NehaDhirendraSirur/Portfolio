@@ -1,6 +1,6 @@
 // src/components/Skills.jsx
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, memo } from "react";
 import { X, ExternalLink } from "lucide-react";
 import awsCert from "../assets/certAWS.jpg";
 import ciscoCert from "../assets/cisco_networking.jpg";
@@ -10,85 +10,93 @@ import mongoAggCert from "../assets/mongo_agg_fundamentals.jpg";
 import mongoSQLCert from "../assets/sql_to_mongo.jpg";
 import mongoVectorCert from "../assets/Mongodb_vector.jpg";
 
-// ─── Skill Domains ────────────────────────────────────────────────────────────
+// ─── Level thresholds (change once, applies everywhere) ───────────────────────
+function getLevel(percent) {
+  if (percent >= 80) return "Advanced";
+  if (percent >= 60) return "Intermediate";
+  return "Beginner";
+}
+
+function levelBadge(percent) {
+  const level = getLevel(percent);
+  if (level === "Advanced")    return { cls: "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30", label: "Advanced" };
+  if (level === "Intermediate") return { cls: "bg-blue-500/20 text-blue-300 border border-blue-500/30",     label: "Intermediate" };
+  return                               { cls: "bg-orange-500/20 text-orange-300 border border-orange-500/30", label: "Beginner" };
+}
+
+// ─── Skill Domains — just label + level now, no note needed ──────────────────
 const domains = [
   {
     domain: "Languages",
     color: "#60A5FA",
     skills: [
-      { label: "Python", level: 90, note: "Advanced" },
-      { label: "Java", level: 85, note: "Advanced" },
-      { label: "JavaScript", level: 75, note: "Intermediate" },
-      { label: "C / C++", level: 70, note: "Intermediate" },
-      { label: "SQL", level: 80, note: "Advanced" },
+      { label: "Python",      level: 85 },
+      { label: "Java",        level: 70 },
+      { label: "JavaScript",  level: 75 },
+      { label: "C / C++",     level: 80 },
+      { label: "SQL",         level: 80 },
     ],
   },
   {
     domain: "Web Development",
     color: "#34D399",
     skills: [
-      { label: "React.js", level: 85, note: "Advanced" },
-      { label: "Spring Boot", level: 80, note: "Advanced" },
-      { label: "HTML & CSS", level: 85, note: "Advanced" },
-      { label: "Node.js", level: 65, note: "Intermediate" },
-      { label: "REST APIs", level: 85, note: "Advanced" },
-      { label: "Tailwind CSS", level: 80, note: "Advanced" },
+      { label: "React.js",    level: 80 },
+      { label: "Spring Boot", level: 85 },
+      { label: "HTML & CSS",  level: 85 },
+      { label: "Node.js",     level: 65 },
+      { label: "REST APIs",   level: 85 },
+      { label: "Tailwind CSS",level: 80 },
     ],
   },
   {
     domain: "AI / ML & Research",
     color: "#F472B6",
     skills: [
-      { label: "Machine Learning", level: 85, note: "Advanced" },
-      { label: "Deep Learning", level: 80, note: "Advanced" },
-      { label: "Computer Vision", level: 75, note: "Intermediate" },
-      { label: "NLP", level: 75, note: "Intermediate" },
-      { label: "Generative AI", level: 75, note: "Intermediate" },
-      { label: "Multimodal Learning", level: 70, note: "Intermediate" },
-      { label: "Explainable AI", level: 75, note: "Intermediate" },
+      { label: "Machine Learning",   level: 85 },
+      { label: "Deep Learning",      level: 80 },
+      // { label: "Computer Vision",    level: 80 },
+      { label: "NLP",                level: 75 },
+      { label: "Generative AI",      level: 75 },
+      { label: "Multimodal Learning",level: 70 },
+      { label: "Explainable AI",     level: 75 },
     ],
   },
-  {
-    domain: "ML Libraries & Tools",
-    color: "#FBBF24",
-    skills: [
-      { label: "TensorFlow", level: 80, note: "Advanced" },
-      { label: "PyTorch", level: 75, note: "Intermediate" },
-      { label: "scikit-learn", level: 80, note: "Advanced" },
-      { label: "OpenCV", level: 70, note: "Intermediate" },
-      { label: "NumPy / Pandas", level: 85, note: "Advanced" },
-    ],
-  },
+  // {
+  //   domain: "ML Libraries & Tools",
+  //   color: "#FBBF24",
+  //   skills: [
+  //     { label: "TensorFlow",    level: 80 },
+  //     { label: "PyTorch",       level: 75 },
+  //     { label: "scikit-learn",  level: 80 },
+  //     { label: "OpenCV",        level: 70 },
+  //     { label: "NumPy / Pandas",level: 85 },
+  //   ],
+  // },
   {
     domain: "Databases",
     color: "#A78BFA",
     skills: [
-      { label: "MySQL / PostgreSQL", level: 80, note: "Advanced" },
-      { label: "MongoDB", level: 75, note: "Intermediate" },
-      { label: "Oracle DB", level: 65, note: "Intermediate" },
+      { label: "MySQL / PostgreSQL", level: 80 },
+      { label: "MongoDB",            level: 75 },
+      { label: "Oracle DB",          level: 80 },
     ],
   },
   {
     domain: "Tools & Practices",
     color: "#FB923C",
     skills: [
-      { label: "Git / GitHub", level: 85, note: "Advanced" },
-      { label: "Postman", level: 80, note: "Advanced" },
-      { label: "Agile / Scrum", level: 75, note: "Intermediate" },
-      { label: "Docker", level: 60, note: "Beginner" },
-      { label: "Kubernetes", level: 55, note: "Beginner" },
-      { label: "Hadoop / Big Data", level: 60, note: "Beginner" },
+      { label: "Git / GitHub",   level: 90 },
+      { label: "Postman",        level: 90 },
+      // { label: "Agile / Scrum",  level: 75 },
+      { label: "Docker",         level: 50 },
+      { label: "Kubernetes",     level: 50 },
+      { label: "Hadoop / Big Data", level: 50 },
     ],
   },
 ];
 
 // ─── Certifications ───────────────────────────────────────────────────────────
-// To add certificate image previews:
-// 1. Convert your PDF to a JPG/PNG screenshot
-// 2. Save it in src/assets/ e.g. cert_aws.jpg
-// 3. Import at top: import certAws from "../assets/cert_aws.jpg"
-// 4. Replace null with the imported variable e.g. image: certAws
-
 const certifications = [
   {
     title: "AWS Academy Graduate – Cloud Foundations",
@@ -96,7 +104,7 @@ const certifications = [
     date: "Oct 2024",
     url: "https://www.credly.com/go/u4ekxOmP",
     skills: ["AWS Architecture", "AWS Core Services", "Cloud Computing", "AWS Pricing"],
-    image: awsCert, 
+    image: awsCert,
   },
   {
     title: "Networking Basics",
@@ -148,18 +156,21 @@ const certifications = [
   },
 ];
 
-// ─── Circular Progress Ring ───────────────────────────────────────────────────
-function CircleRing({ percent, color, size = 80 }) {
+// ─── Circular Progress Ring (memoized) ───────────────────────────────────────
+const CircleRing = memo(function CircleRing({ percent, color, size = 80 }) {
   const r = (size - 10) / 2;
   const circ = 2 * Math.PI * r;
   const offset = circ - (percent / 100) * circ;
 
   return (
     <svg width={size} height={size} className="rotate-[-90deg]">
-      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth={6} />
+      <circle
+        cx={size / 2} cy={size / 2} r={r}
+        fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth={6}
+      />
       <motion.circle
-        cx={size / 2} cy={size / 2} r={r} fill="none"
-        stroke={color} strokeWidth={6} strokeLinecap="round"
+        cx={size / 2} cy={size / 2} r={r}
+        fill="none" stroke={color} strokeWidth={6} strokeLinecap="round"
         strokeDasharray={circ}
         initial={{ strokeDashoffset: circ }}
         whileInView={{ strokeDashoffset: offset }}
@@ -168,15 +179,11 @@ function CircleRing({ percent, color, size = 80 }) {
       />
     </svg>
   );
-}
+});
 
-function levelBadge(note) {
-  if (note === "Advanced") return "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
-  if (note === "Intermediate") return "bg-blue-500/20 text-blue-300 border border-blue-500/30";
-  return "bg-orange-500/20 text-orange-300 border border-orange-500/30";
-}
-
-function SkillCard({ skill, color }) {
+// ─── Skill Card (memoized) ────────────────────────────────────────────────────
+const SkillCard = memo(function SkillCard({ skill, color }) {
+  const badge = levelBadge(skill.level);
   return (
     <motion.div
       className="flex flex-col items-center p-4 rounded-2xl bg-white/5 ring-1 ring-white/10 hover:ring-white/25 hover:bg-white/10 transition"
@@ -192,12 +199,12 @@ function SkillCard({ skill, color }) {
         </span>
       </div>
       <p className="mt-3 text-sm text-center text-gray-200 font-medium leading-tight">{skill.label}</p>
-      <span className={`mt-2 text-[10px] px-2 py-0.5 rounded-full font-semibold ${levelBadge(skill.note)}`}>
-        {skill.note}
+      <span className={`mt-2 text-[10px] px-2 py-0.5 rounded-full font-semibold ${badge.cls}`}>
+        {badge.label}
       </span>
     </motion.div>
   );
-}
+});
 
 // ─── Cert Card ────────────────────────────────────────────────────────────────
 function CertCard({ cert }) {
@@ -213,7 +220,6 @@ function CertCard({ cert }) {
         viewport={{ once: true }}
         whileHover={{ scale: 1.02 }}
       >
-        {/* Image preview or placeholder */}
         <div className="w-full h-28 rounded-xl overflow-hidden bg-white/5 flex items-center justify-center">
           {cert.image ? (
             <img src={cert.image} alt={cert.title} className="w-full h-full object-cover" />
@@ -253,7 +259,6 @@ function CertCard({ cert }) {
         </div>
       </motion.div>
 
-      {/* Image Modal */}
       {open && cert.image && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={() => setOpen(false)} />
@@ -277,7 +282,7 @@ export default function Skills() {
       <div className="max-w-7xl mx-auto">
 
         <motion.h1
-          className="text-3xl md:text-4xl font-bold mb-14 text-center"
+          className="text-3xl md:text-4xl font-bold mb-6 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -285,6 +290,28 @@ export default function Skills() {
         >
           Skills
         </motion.h1>
+
+        {/* Legend */}
+        {/* <motion.div
+          className="flex items-center justify-center gap-4 mb-12 text-xs"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
+          <span className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
+            <span className="text-gray-400">Advanced (80–100)</span>
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-blue-400 inline-block" />
+            <span className="text-gray-400">Intermediate (60–79)</span>
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-orange-400 inline-block" />
+            <span className="text-gray-400">Beginner (0–59)</span>
+          </span>
+        </motion.div> */}
 
         {/* Domain Sections */}
         {domains.map((d, di) => (
