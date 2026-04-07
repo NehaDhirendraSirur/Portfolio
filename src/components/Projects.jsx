@@ -15,16 +15,18 @@ const projects = [
     tech: ["Python", "PyTorch", "FedAvg", "LIME", "Matplotlib"],
     github: "https://github.com/NehaDhirendraSirur/XAI_with_Federated_Learning",
   },
-  {
-    title: "Generative AI for Inter-instrumental Synthesis of Indian Classical Music",
-    tagline: "LSTM-RNN converting piano tunes to harmonium renditions",
-    category: "Generative AI",
-    categoryColor: "#A78BFA",
-    featured: true,
-    description:
-      "A generative AI solution powered by LSTM-RNN to automatically convert classical piano tunes into harmonium renditions while retaining the unique characteristics of the instrument.",
-    tech: ["Python", "TensorFlow", "PyTorch", "MIDI"],
-    github: "https://github.com/NehaDhirendraSirur/GenAI_for_IndianClassicalMusic",
+{
+  title: "Stiq - The Habit Tracker",
+  tagline: "Streak-Based Habit Tracker Web Application with Gamification",
+  category: "Web Dev",
+  categoryColor: "#A78BFA",
+  featured: true,
+  description:
+    "A full-stack gamified habit tracking application that helps users build consistency through streaks, rewards, and growth progression. Users can track daily habits, earn points, maintain streaks with freeze mechanisms, and level up a visual growth companion, making habit building engaging and interactive.",
+  tech: [
+    "Java", "Spring Boot", "Spring Security", "JWT", "PostgreSQL", "React", "Vite", "Tailwind CSS"
+  ],
+  github: "https://github.com/NehaDhirendraSirur/Stiq-TheHabitTracker.git",
   },
   {
     title: "URL Redirection Service",
@@ -36,6 +38,17 @@ const projects = [
       "URL shortening service with expiry handling and analytics using Spring Boot and PostgreSQL. Generates short, unique URLs and resolves them with low latency while handling expiration and basic analytics.",
     tech: ["Spring Boot", "PostgreSQL", "React.js"],
     github: "https://github.com/NehaDhirendraSirur/Url_Redirection_Service",
+  },
+    {
+    title: "Generative AI for Inter-instrumental Synthesis of Indian Classical Music",
+    tagline: "LSTM-RNN converting piano tunes to harmonium renditions",
+    category: "Generative AI",
+    categoryColor: "#A78BFA",
+    featured: true,
+    description:
+      "A generative AI solution powered by LSTM-RNN to automatically convert classical piano tunes into harmonium renditions while retaining the unique characteristics of the instrument.",
+    tech: ["Python", "TensorFlow", "PyTorch", "MIDI"],
+    github: "https://github.com/NehaDhirendraSirur/GenAI_for_IndianClassicalMusic",
   },
   {
     title: "Multilingual Text Classification using IndicCorp dataset",
@@ -95,14 +108,14 @@ export default function Projects() {
         Projects
       </motion.h2>
 
-      <motion.p
+      {/* <motion.p
         className="text-center text-sm text-blue-300/70 mb-12"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.5 }}
       >
         ⭐ Featured projects highlighted
-      </motion.p>
+      </motion.p> */}
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((proj, index) => (
