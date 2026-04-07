@@ -1,14 +1,13 @@
 {
   "files": {
     "main.css": "/Portfolio/static/css/main.e7b9d1ff.css",
-    "main.js": "/Portfolio/static/js/main.ed5219e9.js",
+    "main.js": "/Portfolio/static/js/main.6258b7a4.js",
     "static/js/453.a7d99afe.chunk.js": "/Portfolio/static/js/453.a7d99afe.chunk.js",
     "static/media/conf_certificate5.jpg": "/Portfolio/static/media/conf_certificate5.997dd260e3e87aa299ab.jpg",
     "static/media/conf_certificate1.jpg": "/Portfolio/static/media/conf_certificate1.99b87004bcb4c9539f50.jpg",
     "static/media/conf_certificate4.jpg": "/Portfolio/static/media/conf_certificate4.fb20816dc766d562aded.jpg",
     "static/media/conf_certificate6.jpg": "/Portfolio/static/media/conf_certificate6.a213d70d59c6e898b05c.jpg",
     "static/media/conf_certificate2.jpg": "/Portfolio/static/media/conf_certificate2.da5033b1f2797dd7de58.jpg",
-    "static/media/img1.jpg": "/Portfolio/static/media/img1.c68d8038f437ad810056.jpg",
     "static/media/conf_certificate3.jpg": "/Portfolio/static/media/conf_certificate3.fb7cf8550e0440ef1c3a.jpg",
     "static/media/cisco_networking.jpg": "/Portfolio/static/media/cisco_networking.08b3537a31505cf004ca.jpg",
     "static/media/Kubernetes_Certificate.jpg": "/Portfolio/static/media/Kubernetes_Certificate.2e94bf9a0979dbc3165d.jpg",
@@ -17,14 +16,15 @@
     "static/media/Mongodb_vector.jpg": "/Portfolio/static/media/Mongodb_vector.fb74f1277885812652d3.jpg",
     "static/media/mongo_agg_fundamentals.jpg": "/Portfolio/static/media/mongo_agg_fundamentals.d5530bf0875960ec3324.jpg",
     "static/media/version_control.jpg": "/Portfolio/static/media/version_control.cbfb3c1fa07d7bbcc8f9.jpg",
+    "static/media/img2.jpeg": "/Portfolio/static/media/img2.3ebf2301ac5c64d504bd.jpeg",
     "static/media/NehaSirur_Resume.pdf": "/Portfolio/static/media/NehaSirur_Resume.fddcb4520aee316655b4.pdf",
     "index.html": "/Portfolio/index.html",
     "main.e7b9d1ff.css.map": "/Portfolio/static/css/main.e7b9d1ff.css.map",
-    "main.ed5219e9.js.map": "/Portfolio/static/js/main.ed5219e9.js.map",
+    "main.6258b7a4.js.map": "/Portfolio/static/js/main.6258b7a4.js.map",
     "453.a7d99afe.chunk.js.map": "/Portfolio/static/js/453.a7d99afe.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e7b9d1ff.css",
-    "static/js/main.ed5219e9.js"
+    "static/js/main.6258b7a4.js"
   ]
 }
