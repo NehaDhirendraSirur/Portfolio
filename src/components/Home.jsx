@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import profileImg from "../assets/img1.jpg";
+import profileImg from "../assets/img2.jpeg";
 
 const roles = [
   "Full Stack Developer",
@@ -136,7 +136,7 @@ export default function Home() {
             variants={itemVariants}
             className="mt-7 flex flex-wrap gap-3 justify-center md:justify-start"
           >
-            <Link
+            {/* <Link
               to="/projects"
               className="px-6 py-2.5 rounded-full bg-blue-500 hover:bg-blue-400 text-white font-medium text-sm transition-all duration-200 shadow-lg shadow-blue-500/30 hover:shadow-blue-400/40 hover:scale-105"
             >
@@ -153,7 +153,7 @@ export default function Home() {
               className="px-6 py-2.5 rounded-full border border-white/30 hover:border-blue-400 text-white font-medium text-sm transition-all duration-200 hover:bg-white/5 hover:scale-105"
             >
               Publications
-            </Link>
+            </Link> */}
           </motion.div>
         </motion.div>
       </div>
