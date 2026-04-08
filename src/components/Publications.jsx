@@ -112,6 +112,18 @@ export default function Publications() {
   const [active, setActive] = useState(null);
   const [showCert, setShowCert] = useState(false);
 
+  // ── Lock body scroll when any modal is open ──────────────────────────────
+  useEffect(() => {
+    if (active || showCert) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    // Cleanup on unmount
+    return () => { document.body.style.overflow = ""; };
+  }, [active, showCert]);
+
+  // ── Keyboard close ────────────────────────────────────────────────────────
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "Escape") {
@@ -140,7 +152,7 @@ export default function Publications() {
           Publications
         </motion.h1>
 
-        {/* Visible hint text replacing tooltip */}
+        {/* Hint text */}
         <motion.p
           className="text-center text-sm text-blue-300/70 mb-10"
           initial={{ opacity: 0 }}
@@ -174,7 +186,6 @@ export default function Publications() {
                   focus:outline-none focus:ring-2 focus:ring-blue-300
                 "
               >
-                {/* Publisher tag + year */}
                 <div className="flex items-center justify-between mb-3">
                   <span
                     className="text-[11px] font-semibold px-2.5 py-1 rounded-full"
@@ -186,15 +197,11 @@ export default function Publications() {
                     {yearLabel(p.year)}
                   </span>
                 </div>
-
-                {/* Title */}
                 <div className="flex-1">
                   <h3 className="text-base md:text-lg font-semibold leading-snug text-white">
                     {p.title}
                   </h3>
                 </div>
-
-                {/* Venue */}
                 <p className="mt-3 text-xs text-blue-200/70 line-clamp-2 leading-relaxed">
                   {p.venue}
                 </p>
@@ -203,7 +210,7 @@ export default function Publications() {
           })}
         </div>
 
-        {/* ── Main Publication Modal (dark themed) ── */}
+        {/* ── Publication Modal ── */}
         {active && (
           <div className="fixed inset-0 z-50 flex items-center justify-center">
             <div
@@ -211,21 +218,18 @@ export default function Publications() {
               onClick={() => setActive(null)}
             />
             <motion.div
-              className="relative z-10 w-[92%] max-w-2xl"
+              className="relative z-10 w-[92%] max-w-2xl max-h-[90vh] overflow-y-auto"
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.25 }}
             >
               <div className="rounded-2xl bg-[#0E1F33] border border-white/10 shadow-[0_25px_80px_rgba(0,0,0,0.6)] overflow-hidden">
-                {/* Modal header accent bar */}
                 <div
                   className="h-1 w-full"
                   style={{ background: `linear-gradient(to right, ${getPublisherTag(active.venue).color}, transparent)` }}
                 />
-
                 <div className="p-6 md:p-7">
-                  {/* Title row */}
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div className="flex items-start gap-3">
                       <span
@@ -249,30 +253,18 @@ export default function Publications() {
                     </button>
                   </div>
 
-                  {/* Meta */}
                   <div className="space-y-1.5 text-sm text-gray-400 border-t border-white/10 pt-4">
-                    <div>
-                      <span className="text-gray-300 font-medium">Authors: </span>
-                      {active.authors}
-                    </div>
-                    <div>
-                      <span className="text-gray-300 font-medium">Year: </span>
-                      {yearLabel(active.year)}
-                    </div>
-                    <div>
-                      <span className="text-gray-300 font-medium">Venue: </span>
-                      {active.venue}
-                    </div>
+                    <div><span className="text-gray-300 font-medium">Authors: </span>{active.authors}</div>
+                    <div><span className="text-gray-300 font-medium">Year: </span>{yearLabel(active.year)}</div>
+                    <div><span className="text-gray-300 font-medium">Venue: </span>{active.venue}</div>
                   </div>
 
-                  {/* Summary */}
                   {active.summary && (
                     <p className="mt-4 text-gray-300 text-sm leading-relaxed border-t border-white/10 pt-4">
                       {active.summary}
                     </p>
                   )}
 
-                  {/* Action buttons */}
                   <div className="mt-5 flex flex-wrap gap-3">
                     {active.pdf && (
                       <a
@@ -283,8 +275,7 @@ export default function Publications() {
                           bg-white/10 text-white border border-white/15
                           hover:bg-white/15 hover:scale-[1.03] transition shadow-sm text-sm"
                       >
-                        <ExternalLink size={16} />
-                        View PDF / DOI
+                        <ExternalLink size={16} /> View PDF / DOI
                       </a>
                     )}
                     {active.certificate && (
@@ -294,8 +285,7 @@ export default function Publications() {
                           bg-white/10 text-white border border-white/15
                           hover:bg-white/15 hover:scale-[1.03] transition shadow-sm text-sm"
                       >
-                        <Award size={16} />
-                        Certificate
+                        <Award size={16} /> Certificate
                       </button>
                     )}
                   </div>

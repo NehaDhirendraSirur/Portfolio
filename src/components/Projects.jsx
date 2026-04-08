@@ -19,7 +19,7 @@ const projects = [
   title: "Stiq - The Habit Tracker",
   tagline: "Streak-Based Habit Tracker Web Application with Gamification",
   category: "Web Dev",
-  categoryColor: "#A78BFA",
+  categoryColor: "#34D399",
   featured: true,
   description:
     "A full-stack gamified habit tracking application that helps users build consistency through streaks, rewards, and growth progression. Users can track daily habits, earn points, maintain streaks with freeze mechanisms, and level up a visual growth companion, making habit building engaging and interactive.",
@@ -43,7 +43,7 @@ const projects = [
     title: "Generative AI for Inter-instrumental Synthesis of Indian Classical Music",
     tagline: "LSTM-RNN converting piano tunes to harmonium renditions",
     category: "Generative AI",
-    categoryColor: "#A78BFA",
+    categoryColor: "#F472B6",
     featured: true,
     description:
       "A generative AI solution powered by LSTM-RNN to automatically convert classical piano tunes into harmonium renditions while retaining the unique characteristics of the instrument.",
@@ -54,7 +54,7 @@ const projects = [
     title: "Multilingual Text Classification using IndicCorp dataset",
     tagline: "73.37% accuracy across 11 Indian languages",
     category: "NLP",
-    categoryColor: "#60A5FA",
+    categoryColor: "#F472B6",
     featured: false,
     description:
       "Multilingual Text Classification System using IndicCorp, a monolingual dataset with 11 Indic languages. Integrates CountVectorizer for feature extraction and Multinomial Naïve Bayes for classification.",
@@ -75,7 +75,7 @@ const projects = [
   {
     title: "Crop Wellness Analyzer",
     tagline: "Full-stack app with ML disease detection for farmers",
-    category: "Full Stack",
+    category: "Web Dev / ML",
     categoryColor: "#34D399",
     featured: false,
     description:
