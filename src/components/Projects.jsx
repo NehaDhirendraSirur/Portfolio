@@ -5,17 +5,6 @@ import { Star } from "lucide-react";
 
 const projects = [
   {
-    title: "Explainable AI Model for Plant Disease Detection",
-    tagline: "Federated Learning + XAI for transparent agricultural AI",
-    category: "AI / ML",
-    categoryColor: "#F472B6",
-    featured: true,
-    description:
-      "Explores the integration of Explainable Artificial Intelligence (XAI) and Federated Learning to enhance the transparency, privacy, and accuracy of plant disease detection models.",
-    tech: ["Python", "PyTorch", "FedAvg", "LIME", "Matplotlib"],
-    github: "https://github.com/NehaDhirendraSirur/XAI_with_Federated_Learning",
-  },
-{
   title: "Stiq - The Habit Tracker",
   tagline: "Streak-Based Habit Tracker Web Application with Gamification",
   category: "Web Dev",
@@ -27,8 +16,32 @@ const projects = [
     "Java", "Spring Boot", "Spring Security", "JWT", "PostgreSQL", "React", "Vite", "Tailwind CSS"
   ],
   github: "https://github.com/NehaDhirendraSirur/Stiq-TheHabitTracker.git",
-  },
+   },
+   {
+  title: "GitHub Profile Analyzer",
+  tagline: "Analytics + AI insights for any GitHub developer profile",
+  category: "Web Dev / AI",
+  categoryColor: "#34D399",
+  featured: true,
+  description:
+    "A full-stack web application that transforms any GitHub username into a comprehensive developer profile with analytics and AI-powered insights. Features include repository analytics, contribution heatmaps, language trends, and AI-generated portfolio bio, role fit evaluation, and developer archetype using Google Gemini.",
+  tech: [
+    "Next.js", "TypeScript", "Tailwind CSS", "Recharts", "TanStack Query", "Google Gemini API", "Vercel"
+  ],
+  github: "https://github.com/NehaDhirendraSirur/Github-Profile-Analyzer",
+   },
   {
+    title: "Explainable AI Model for Plant Disease Detection",
+    tagline: "Federated Learning + XAI for transparent agricultural AI",
+    category: "AI / ML",
+    categoryColor: "#F472B6",
+    featured: true,
+    description:
+      "Explores the integration of Explainable Artificial Intelligence (XAI) and Federated Learning to enhance the transparency, privacy, and accuracy of plant disease detection models.",
+    tech: ["Python", "PyTorch", "FedAvg", "LIME", "Matplotlib"],
+    github: "https://github.com/NehaDhirendraSirur/XAI_with_Federated_Learning",
+   },
+   {
     title: "URL Redirection Service",
     tagline: "URL shortener with expiry, analytics & low-latency resolution",
     category: "Web Dev",
@@ -38,7 +51,7 @@ const projects = [
       "URL shortening service with expiry handling and analytics using Spring Boot and PostgreSQL. Generates short, unique URLs and resolves them with low latency while handling expiration and basic analytics.",
     tech: ["Spring Boot", "PostgreSQL", "React.js"],
     github: "https://github.com/NehaDhirendraSirur/Url_Redirection_Service",
-  },
+    },
     {
     title: "Generative AI for Inter-instrumental Synthesis of Indian Classical Music",
     tagline: "LSTM-RNN converting piano tunes to harmonium renditions",
@@ -49,8 +62,8 @@ const projects = [
       "A generative AI solution powered by LSTM-RNN to automatically convert classical piano tunes into harmonium renditions while retaining the unique characteristics of the instrument.",
     tech: ["Python", "TensorFlow", "PyTorch", "MIDI"],
     github: "https://github.com/NehaDhirendraSirur/GenAI_for_IndianClassicalMusic",
-  },
-  {
+    },
+    {
     title: "Multilingual Text Classification using IndicCorp dataset",
     tagline: "73.37% accuracy across 11 Indian languages",
     category: "NLP",
@@ -60,8 +73,8 @@ const projects = [
       "Multilingual Text Classification System using IndicCorp, a monolingual dataset with 11 Indic languages. Integrates CountVectorizer for feature extraction and Multinomial Naïve Bayes for classification.",
     tech: ["Python", "scikit-learn", "pandas", "NumPy", "Matplotlib"],
     github: "https://github.com/NehaDhirendraSirur/Multilingual_Text_Classification",
-  },
-  {
+    },
+    {
     title: "Big Data Analytics on NFL Big Data Bowl 2025",
     tagline: "ETL + Hadoop MapReduce for NFL performance insights",
     category: "Big Data",
@@ -71,8 +84,8 @@ const projects = [
       "Analyzed the NFL Big Data Bowl 2025 Kaggle dataset to uncover insights on quarterback performance, passing yards, receiver contributions, and team statistics using Alteryx and Hadoop MapReduce.",
     tech: ["Alteryx", "Hadoop MapReduce", "Java"],
     github: "https://github.com/NehaDhirendraSirur/NFLBowl_BigData",
-  },
-  {
+    },
+    {
     title: "Crop Wellness Analyzer",
     tagline: "Full-stack app with ML disease detection for farmers",
     category: "Web Dev / ML",
@@ -82,8 +95,8 @@ const projects = [
       "Full-stack web application using React, Spring Boot, MySQL, and MongoDB to optimize crop productivity for small-scale farmers. Integrated an ML-based disease detection API using Flask and Axios for real-time image analysis.",
     tech: ["React.js", "Spring Boot", "MySQL", "MongoDB", "Flask", "ML"],
     github: "https://github.com/NehaDhirendraSirur/Crop-Wellness-Analyzer",
-  },
-  {
+    },
+    {
     title: "Portfolio Website",
     tagline: "This very portfolio — built from scratch",
     category: "Web Dev",
@@ -93,7 +106,7 @@ const projects = [
       "Personal portfolio showcasing projects, publications, certifications, and experiences with smooth UI/UX, page transitions, and responsive design.",
     tech: ["React.js", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/NehaDhirendraSirur/portfolio",
-  },
+    },
 ];
 
 export default function Projects() {
